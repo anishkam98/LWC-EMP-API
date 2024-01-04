@@ -43,7 +43,7 @@ const COLUMNS = [
     }
 ];
 
-const CHANNEL_NAME = '/data/OpportunityChangeEvent'
+const CHANNEL_NAME = '/data/OpportunityChangeEvent'; // Need to ensure that Opportunity is selected as a CDC entity in Setup
 
 export default class AccountOpportunities extends LightningElement {
     @api recordId;
@@ -104,7 +104,6 @@ export default class AccountOpportunities extends LightningElement {
 
     handleSubscribe() {
         const messageCallback = (response) => {
-
             if(response.data.payload.ChangeEventHeader.recordIds) {
                 const changedOpportunityIds = Array.from(response.data.payload.ChangeEventHeader.recordIds);
     
